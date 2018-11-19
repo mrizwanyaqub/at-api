@@ -12,7 +12,10 @@ const redis = require('redis');
  * @returns {object} An object containing the setter and getter for redis client.
  */
 function redisClient(redisConfigs) {
-  const client = redis.createClient(redisConfigs);
+  let config = redisConfigs;
+  if(process.env.REDIS_URL)
+    config = process.env.REDIS_URL;
+  const client = redis.createClient(config);
 
   /**
    * @function initClient

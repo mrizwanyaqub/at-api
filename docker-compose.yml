@@ -4,10 +4,6 @@ redis:
   expose:
     - 6379
 app:
-#  build: ./
-#  volumes:
-#    - ./:/var/www/app
-
   image: mrizwanyaqub/at-api
   links:
     - redis
@@ -15,5 +11,3 @@ app:
     - 3000:3000
   environment:
     - REDIS_URL=redis://cache
-  ##command:
-    ##sh -c 'node src/index.js'
